@@ -11,6 +11,10 @@
 		B6407EE42C57AF2C00645F23 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6407EE32C57AF2C00645F23 /* ContentView.swift */; };
 		B6407EE62C57AF2D00645F23 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B6407EE52C57AF2D00645F23 /* Assets.xcassets */; };
 		B6407EE92C57AF2D00645F23 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B6407EE82C57AF2D00645F23 /* Preview Assets.xcassets */; };
+		B6407EF02C57AF9700645F23 /* Calculator.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6407EEF2C57AF9700645F23 /* Calculator.swift */; };
+		B6407EF22C58DC8C00645F23 /* Tokenizer.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6407EF12C58DC8C00645F23 /* Tokenizer.swift */; };
+		B64638F42C5A64A4000517F5 /* ProgramContext.swift in Sources */ = {isa = PBXBuildFile; fileRef = B64638F32C5A64A4000517F5 /* ProgramContext.swift */; };
+		B64638F62C5A654D000517F5 /* Compiler.swift in Sources */ = {isa = PBXBuildFile; fileRef = B64638F52C5A654D000517F5 /* Compiler.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -19,6 +23,10 @@
 		B6407EE32C57AF2C00645F23 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		B6407EE52C57AF2D00645F23 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		B6407EE82C57AF2D00645F23 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		B6407EEF2C57AF9700645F23 /* Calculator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Calculator.swift; sourceTree = "<group>"; };
+		B6407EF12C58DC8C00645F23 /* Tokenizer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tokenizer.swift; sourceTree = "<group>"; };
+		B64638F32C5A64A4000517F5 /* ProgramContext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProgramContext.swift; sourceTree = "<group>"; };
+		B64638F52C5A654D000517F5 /* Compiler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Compiler.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -55,6 +63,10 @@
 				B6407EE32C57AF2C00645F23 /* ContentView.swift */,
 				B6407EE52C57AF2D00645F23 /* Assets.xcassets */,
 				B6407EE72C57AF2D00645F23 /* Preview Content */,
+				B6407EEF2C57AF9700645F23 /* Calculator.swift */,
+				B6407EF12C58DC8C00645F23 /* Tokenizer.swift */,
+				B64638F32C5A64A4000517F5 /* ProgramContext.swift */,
+				B64638F52C5A654D000517F5 /* Compiler.swift */,
 			);
 			path = Expression;
 			sourceTree = "<group>";
@@ -138,7 +150,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				B6407EE42C57AF2C00645F23 /* ContentView.swift in Sources */,
+				B6407EF22C58DC8C00645F23 /* Tokenizer.swift in Sources */,
+				B64638F42C5A64A4000517F5 /* ProgramContext.swift in Sources */,
 				B6407EE22C57AF2C00645F23 /* ExpressionApp.swift in Sources */,
+				B64638F62C5A654D000517F5 /* Compiler.swift in Sources */,
+				B6407EF02C57AF9700645F23 /* Calculator.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
