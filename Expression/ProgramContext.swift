@@ -167,7 +167,7 @@ enum Instruction: CustomStringConvertible {
 class ProgramContext: ObservableObject {
     var stack: [Double] = []
     @Published var variable: [String: Double] = [:]
-    let program: [Instruction]
+    var program: [Instruction]
     
     init(_ program: [Instruction]) {
         self.program = program

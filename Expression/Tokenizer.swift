@@ -160,7 +160,7 @@ class Tokenizer {
             }
         case "<":
             advance()
-            reswitch peek {
+            switch peek() {
             case "=":
                 advance()
                 return .relop("<=")
