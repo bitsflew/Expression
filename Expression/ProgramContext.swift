@@ -12,103 +12,103 @@ enum ProgramError: Error {
     case undefined(String)
 }
 
-struct Impl {
-    let params: Int
+struct Symbol {
+    let arity: Int
     let code: ([Double]) -> Double
 }
 
-let functions: [String: Impl] = [
-    "+": Impl(params: 2, code: { params in
+let functions: [String: Symbol] = [
+    "+": Symbol(arity: 2, code: { params in
         params[0] + params[1]
     }),
-    "-": Impl(params: 2, code: { params in
+    "-": Symbol(arity: 2, code: { params in
         params[0] - params[1]
     }),
-    "*": Impl(params: 2, code: { params in
+    "*": Symbol(arity: 2, code: { params in
         params[0] * params[1]
     }),
-    "/": Impl(params: 2, code: { params in
+    "/": Symbol(arity: 2, code: { params in
         params[0] / params[1]
     }),
-    "neg": Impl(params: 1, code: { params in
+    "neg": Symbol(arity: 1, code: { params in
         -params[0]
     }),
-    "log": Impl(params: 1, code: { params in
+    "log": Symbol(arity: 1, code: { params in
         log(params[0])
     }),
-    "exp": Impl(params: 1, code: { params in
+    "exp": Symbol(arity: 1, code: { params in
         exp(params[0])
     }),
-    "log10": Impl(params: 1, code: { params in
+    "log10": Symbol(arity: 1, code: { params in
         log10(params[0])
     }),
-    "pow": Impl(params: 2, code: { params in
+    "pow": Symbol(arity: 2, code: { params in
         pow(params[0], params[1])
     }),
-    "sqrt": Impl(params: 1, code: { params in
+    "sqrt": Symbol(arity: 1, code: { params in
         sqrt(params[0])
     }),
     
-    "sin": Impl(params: 1, code: { params in
+    "sin": Symbol(arity: 1, code: { params in
         sin(params[0])
     }),
-    "cos": Impl(params: 1, code: { params in
+    "cos": Symbol(arity: 1, code: { params in
         cos(params[0])
     }),
-    "tan": Impl(params: 1, code: { params in
+    "tan": Symbol(arity: 1, code: { params in
         tan(params[0])
     }),
-    "asin": Impl(params: 1, code: { params in
+    "asin": Symbol(arity: 1, code: { params in
         asin(params[0])
     }),
-    "acos": Impl(params: 1, code: { params in
+    "acos": Symbol(arity: 1, code: { params in
         acos(params[0])
     }),
-    "atan": Impl(params: 1, code: { params in
+    "atan": Symbol(arity: 1, code: { params in
         atan(params[0])
     }),
-    "&&": Impl(params: 2, code: { params in
+    "&&": Symbol(arity: 2, code: { params in
         (params[0] != 0 && params[1] != 0) ? 1 : 0
     }),
-    "||": Impl(params: 2, code: { params in
+    "||": Symbol(arity: 2, code: { params in
         (params[0] != 0 || params[1] != 0) ? 1 : 0
     }),
-    "!": Impl(params: 1, code: { params in
+    "!": Symbol(arity: 1, code: { params in
         params[0] != 0 ? 0 : 1
     }),
     
-    "==": Impl(params: 2, code: { params in
+    "==": Symbol(arity: 2, code: { params in
         (params[0] == params[1]) ? 1 : 0
     }),
-    "!=": Impl(params: 2, code: { params in
+    "!=": Symbol(arity: 2, code: { params in
         (params[0] != params[1]) ? 1 : 0
     }),
-    "<": Impl(params: 2, code: { params in
+    "<": Symbol(arity: 2, code: { params in
         (params[0] < params[1]) ? 1 : 0
     }),
-    ">": Impl(params: 2, code: { params in
+    ">": Symbol(arity: 2, code: { params in
         (params[0] > params[1]) ? 1 : 0
     }),
-    "<=": Impl(params: 2, code: { params in
+    "<=": Symbol(arity: 2, code: { params in
         (params[0] <= params[1]) ? 1 : 0
     }),
-    ">=": Impl(params: 2, code: { params in
+    ">=": Symbol(arity: 2, code: { params in
         (params[0] >= params[1]) ? 1 : 0
     }),
     
-    "abs": Impl(params: 1, code: { params in
+    "abs": Symbol(arity: 1, code: { params in
         abs(params[0])
     }),
-    "min": Impl(params: 2, code: { params in
+    "min": Symbol(arity: 2, code: { params in
         min(params[0], params[1])
     }),
-    "max": Impl(params: 2, code: { params in
+    "max": Symbol(arity: 2, code: { params in
         max(params[0], params[1])
     }),
-    "round": Impl(params: 1, code: { params in
+    "round": Symbol(arity: 1, code: { params in
         round(params[0])
     }),
-    "if": Impl(params: 3, code: { params in
+    "if": Symbol(arity: 3, code: { params in
         params[0] != 0 ? params[1] : params[2]
     })
 ]
@@ -121,7 +121,7 @@ enum Instruction: CustomStringConvertible {
     // pop value onm the stack and assign it to a variable
     case popVariable(String)
     // call build-in function
-    case call(String, Impl)
+    case call(String, Symbol)
     
     var description: String {
         switch self {
@@ -154,11 +154,11 @@ enum Instruction: CustomStringConvertible {
             context.variable[name] = context.stack.popLast()
             
         case let .call(_, impl):
-            guard context.stack.count >= impl.params
+            guard context.stack.count >= impl.arity
             else { throw ProgramError.underflow }
             
-            let result = impl.code(context.stack.suffix(impl.params))
-            context.stack.removeLast(impl.params)
+            let result = impl.code(context.stack.suffix(impl.arity))
+            context.stack.removeLast(impl.arity)
             context.stack.append(result)
         }
     }

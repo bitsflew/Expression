@@ -98,7 +98,7 @@ class Tokenizer {
                 return .addop("||")
             default:
                 return if let impl = functions[identifier] {
-                    .function(identifier, impl.params)
+                    .function(identifier, impl.arity)
                 } else {
                     .identifier(identifier)
                 }
